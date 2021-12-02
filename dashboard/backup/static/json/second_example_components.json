@@ -1,0 +1,20 @@
+{
+  "schema": {
+    "text": {
+      "type": "string",
+      "title": "Text"
+    },
+    "category": {
+      "type": "string",
+      "title": "Category",
+      "enum": [
+        "Geography",
+        "Entertainment",
+        "History",
+        "Arts",
+        "Science",
+        "Sports"
+      ]
+    }
+  }
+}

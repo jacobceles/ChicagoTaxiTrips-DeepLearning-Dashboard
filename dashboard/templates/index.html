@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+      <meta name="description" content="Using Deep Learning to predict the taxi fare, and build a dashboard for showing the implementation using Flask." />
+      <meta name="author" content="Group 5 - Jacob Celestine, Harsh Patel, Pulak Raj" />
+      <title>Deep Learning Dashboard - Chicago Taxi Data</title>
+      <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700' rel='stylesheet' type='text/css'>
+      <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+      <link href="static/css/styles.css" rel="stylesheet" />
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+
+  <!-- Favicons -->
+  <link href="static/img/favicon.png" rel="icon">
+  <link href="static/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="static/vendor/aos/aos.css" rel="stylesheet">
+  <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="static/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="static/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="static/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="static/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: iPortfolio - v3.7.0
+  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Mobile nav toggle button ======= -->
+  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+
+  <!-- ======= Header ======= -->
+  <header id="header">
+    <div class="d-flex flex-column">
+
+      <div class="profile">
+        <img src="static/img/profile-img.png" alt="" class="img-fluid rounded-circle">
+
+        <h1 class="text-light"><a href="index.html">Group 5</a></h1>
+        <div class="social-links mt-3 text-center">
+          <a href="https://keras.io/"
+             target="_blank" rel="noopener noreferrer" class="facebook">
+            <span class="iconify" data-icon="simple-icons:keras"></span>
+          </a>
+          <a href="https://www.tensorflow.org/"
+             target="_blank" rel="noopener noreferrer" class="instagram">
+            <span class="iconify" data-icon="simple-icons:tensorflow"></span>
+          </a>
+          <a href="https://en.wikipedia.org/wiki/Neural_network"
+             target="_blank" rel="noopener noreferrer" class="google-plus">
+            <span class="iconify" data-icon="eos-icons:neural-network"></span>
+          </a>
+          <a href="https://en.wikipedia.org/wiki/Deep_learning"
+             target="_blank" rel="noopener noreferrer" class="linkedin">
+            <span class="iconify" data-icon="carbon:machine-learning-model"></span>
+          </a>
+          <a href="https://data.cityofchicago.org/Transportation/Taxi-Trips/wrvz-psew/"
+             target="_blank" rel="noopener noreferrer" class="twitter">
+            <span class="iconify" data-icon="bi:info-lg"></span>
+          </a>
+        </div>
+      </div>
+
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
+          <li><a href="#architecture" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Architecture</span></a></li>
+          <li><a href="#tuning" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Tuning the model</span></a></li>
+          <li><a href="#accuracy" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Predicted vs Expected</span></a></li>
+          <li><a href="#demo" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Demo</span></a></li>
+        </ul>
+      </nav><!-- .nav-menu -->
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Home Section ======= -->
+  <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+    <div class="hero-container" data-aos="fade-in">
+      <h1>Taxi Fare Prediction</h1>
+      <p>using <span class="typed" data-typed-items="Deep Learning, Neural Networks, Machine Learning"></span></p>
+    </div>
+  </section><!-- End Home -->
+
+  <main id="main">
+
+    <!-- ======= Architecture Section ======= -->
+    <section id="architecture" class="about">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Architecture</h2>
+          <p>The number of input units in the network is defined by the number of data channels (number of input vectors)
+            while the number of output units is fixed to one. The user may define both the number of hidden layers as
+            well as the number of hidden units per layer. The context units are fixed, as each hidden unit has an
+            associated context unit. The network is updated through backpropagation through time (BPTT) with a maximum
+            memory defined by the user to conserve computational resources.<br>The user may also define other parameters
+            such as the iterations per training sample, learning rate, and others in Main. This program works for both
+            recurrent and non-recurrent networks, and any number of different neural network architectures can be tested
+            at once. The program is automatically formatted for parallel processing across computer cores.</p>
+        </div>
+
+        <div class="row">
+          <img src="static/img/architecture.png" class="img-fluid" alt="Architecture">
+        </div>
+
+      </div>
+    </section>
+    <!-- End Architecture Section -->
+
+    <!-- ======= Tuning Section ======= -->
+    <section id="tuning" class="about">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Tuning the Model</h2>
+          <p>In the abstract sense of machine learning, tuning is working with / "learning from" variable data based
+            on some parameters which have been identified to affect system performance as evaluated by some appropriate
+            metric. Improved performance reveals which parameter settings are more favorable (tuned) or less favorable
+            (untuned).<br>Translating this into common sense, tuning is essentially selecting the best parameters for an
+            algorithm to optimize its performance given a working environment such as hardware, specific workloads, etc.
+            And tuning in machine learning is an automated process for doing this.<br>For example, there is no such
+            thing as a "perfect set" of optimizations for all deployments of an Apache web server. A sysadmin learns
+            from the data "on the job" so to speak and optimizes their own Apache web server configuration as
+            appropriate for its specific environment. Now imagine an automated process for doing this same thing,
+            i.e., a system that can learn from data on its own, which is the definition of machine learning. A system
+            that tunes its own parameters in such a data-based fashion would be an instance of tuning in machine
+            learning.</p>
+        </div>
+
+      </div>
+    </section>
+    <!-- End Tuning Section -->
+
+    <!-- ======= Accuracy Section ======= -->
+    <section id="accuracy" class="about">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Accuracy</h2>
+          <p>Here we have a scatter plot showing the relationship between expected and predicted value</p>
+        </div>
+
+        <div class="row">
+          <img src="static/img/p_vs_e.png" class="img-fluid" alt="Predicted vs Expected Graph">
+        </div>
+
+      </div>
+    </section>
+    <!-- End Accuracy Section -->
+
+    <!-- ======= Demo Section ======= -->
+    <section id="demo" class="about">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Demo</h2>
+          <p>What do we put here?</p>
+        </div>
+
+      </div>
+    </section>
+    <!-- End Demo Section -->
+
+  </main>
+  <!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>@ Group 5</span></strong>
+      </div>
+    </div>
+  </footer><!-- End  Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="static/vendor/purecounter/purecounter.js"></script>
+  <script src="static/vendor/aos/aos.js"></script>
+  <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="static/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="static/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="static/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="static/vendor/typed.js/typed.min.js"></script>
+  <script src="static/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="static/js/main.js"></script>
+
+</body>
+
+</html>
