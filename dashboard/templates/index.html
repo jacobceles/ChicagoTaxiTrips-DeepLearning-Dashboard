@@ -2,44 +2,31 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
   <meta charset="utf-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-      <meta name="description" content="Using Deep Learning to predict the taxi fare, and build a dashboard for showing the implementation using Flask." />
-      <meta name="author" content="Group 5 - Jacob Celestine, Harsh Patel, Pulak Raj" />
-      <title>Deep Learning Dashboard - Chicago Taxi Data</title>
-      <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700' rel='stylesheet' type='text/css'>
-      <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-      <link href="static/css/styles.css" rel="stylesheet" />
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="author" content="Group 5 - Jacob Celestine, Harsh Patel, Pulak Raj" />
+  <meta name="description" content="Using Deep Learning to predict the taxi fare, and build a dashboard for showing
+  the implementation using Flask." />
+
+  <title>Deep Learning Dashboard - Chicago Taxi Data</title>
 
   <!-- Favicons -->
   <link href="static/img/favicon.png" rel="icon">
   <link href="static/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
   <!-- Vendor CSS Files -->
   <link href="static/vendor/aos/aos.css" rel="stylesheet">
   <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="static/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="static/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="static/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="static/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-  <!-- Template Main CSS File -->
+  <!-- Main CSS File -->
   <link href="static/css/style.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: iPortfolio - v3.7.0
-  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  <!-- Main JS File -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -54,7 +41,7 @@
       <div class="profile">
         <img src="static/img/profile-img.png" alt="" class="img-fluid rounded-circle">
 
-        <h1 class="text-light"><a href="index.html">Group 5</a></h1>
+        <h1 class="text-light"><a href="#">Group 5</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="https://keras.io/"
              target="_blank" rel="noopener noreferrer" class="facebook">
@@ -81,15 +68,42 @@
 
       <nav id="navbar" class="nav-menu navbar">
         <ul>
-          <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
-          <li><a href="#architecture" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Architecture</span></a></li>
-          <li><a href="#tuning" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Tuning the model</span></a></li>
-          <li><a href="#accuracy" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Predicted vs Expected</span></a></li>
-          <li><a href="#demo" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Demo</span></a></li>
+          <li>
+            <a href="#hero" class="nav-link scrollto active">
+              <span class="iconify" data-icon="ant-design:home-outlined" data-width="24" data-height="24"></span>
+              <span>&nbsp;&nbsp;Home</span>
+            </a>
+          </li>
+          <li>
+            <a href="#architecture" class="nav-link scrollto">
+              <span class="iconify" data-icon="ic:round-architecture" data-width="24" data-height="24"></span>
+              <span>&nbsp;&nbsp;Architecture</span>
+            </a>
+          </li>
+          <li>
+            <a href="#tuning" class="nav-link scrollto">
+              <span class="iconify" data-icon="mdi:tune-variant" data-width="24" data-height="24"></span>
+              <span>&nbsp;&nbsp;Tuning the model</span>
+            </a>
+          </li>
+          <li>
+            <a href="#accuracy" class="nav-link scrollto">
+              <span class="iconify" data-icon="bi:graph-up" data-width="24" data-height="24"></span>
+              <span>&nbsp;&nbsp;Predicted vs Expected</span>
+            </a>
+          </li>
+          <li>
+            <a href="#demo" class="nav-link scrollto">
+              <span class="iconify" data-icon="ic:baseline-online-prediction" data-width="24" data-height="24"></span>
+              <span>&nbsp;&nbsp;Demo</span>
+            </a>
+          </li>
         </ul>
       </nav><!-- .nav-menu -->
+
     </div>
-  </header><!-- End Header -->
+  </header>
+  <!-- End Header -->
 
   <!-- ======= Home Section ======= -->
   <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
@@ -97,10 +111,10 @@
       <h1>Taxi Fare Prediction</h1>
       <p>using <span class="typed" data-typed-items="Deep Learning, Neural Networks, Machine Learning"></span></p>
     </div>
-  </section><!-- End Home -->
+  </section>
+  <!-- End Home -->
 
   <main id="main">
-
     <!-- ======= Architecture Section ======= -->
     <section id="architecture" class="about">
       <div class="container">
@@ -159,7 +173,10 @@
         </div>
 
         <div class="row">
-          <img src="static/img/p_vs_e.png" class="img-fluid" alt="Predicted vs Expected Graph">
+          <center>
+<!--class="img-fluid"-->
+            <img src="static/img/p_vs_e.png" style="max-width:50%;height:400" alt="Predicted vs Expected Graph">
+          </center>
         </div>
 
       </div>
@@ -169,16 +186,60 @@
     <!-- ======= Demo Section ======= -->
     <section id="demo" class="about">
       <div class="container">
-
         <div class="section-title">
           <h2>Demo</h2>
-          <p>What do we put here?</p>
+          <center>
+            <p>Curious what your taxi price would have been? No problem!<br>
+              Enter the following details, and we will predict it for you!</p>
+          </center>
+          <br>
+          <form class="row gy-2 gx-3 align-items-center" id="predictionForm" action="/prediction" method="GET">
+            <div class="row justify-content-center">
+              <div class="col-auto">
+                <label class="visually-hidden" for="distance">Distance (Miles)</label>
+                <input type="number" class="form-control" id="distance" name="distance" placeholder="Distance (Miles)">
+              </div>
+              <div class="col-auto">
+                <label class="visually-hidden" for="seconds">Time Taken (Seconds)</label>
+                <input type="number" class="form-control" id="seconds" name="seconds" placeholder="Time Taken (Seconds)">
+              </div>
+              <div class="col-auto">
+                <label class="visually-hidden" for="month">Month</label>
+                <select class="form-select" id="month" name="month">
+                  <option value="" disabled selected>Which Month?</option>
+                  <option value="1">January</option>
+                  <option value="2">February</option>
+                  <option value="3">March</option>
+                  <option value="4">April</option>
+                  <option value="5">May</option>
+                  <option value="6">June</option>
+                  <option value="7">July</option>
+                  <option value="8">August</option>
+                  <option value="9">September</option>
+                  <option value="10">October</option>
+                  <option value=11>November</option>
+                  <option value="12">December</option>
+                </select>
+              </div>
+              <div class="col-auto">
+                <button type="submit" class="btn btn-primary" id="submitButton" value="submit">Submit</button>
+              </div>
+            </div>
+          </form>
         </div>
-
       </div>
     </section>
     <!-- End Demo Section -->
 
+    <!-- Results Section -->
+    <center>
+      <section id="results" class="tm-section-pad-top">
+        <canvas id="fare_chart" width="100%" height="40"></canvas>
+      </section>
+    </center>
+    <!-- End Results Section -->
+
+    <br><br><br><br><br><br><br><br><br><br><br><br>
   </main>
   <!-- End #main -->
 
@@ -206,6 +267,94 @@
 
   <!-- Template Main JS File -->
   <script src="static/js/main.js"></script>
+
+  <!-- Handle Form -->
+  <script src="/static/js/jquery-1.9.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js" crossorigin="anonymous"></script>
+  <script>
+  var fare_chart;
+  $(document).ready(function() {
+      $('#predictionForm').on('submit', function(event) {
+          event.preventDefault();
+          var spin = $("<span class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span>");
+          $("#submitButton").empty();
+          $("#submitButton").append(spin);
+          $('html, body').animate({
+              scrollTop: $("#demo").offset().top
+          }, 300);
+          if(fare_chart) { fare_chart.destroy() }
+
+          $.ajax({
+              type: 'get',
+              url: '/prediction',
+              data: $('#predictionForm').serialize(),
+              success: function(q) {
+                  $("#submitButton").empty();
+                  $("#submitButton").text("Submit");
+                  $('html, body').animate({
+                      scrollTop: $("#results").offset().top
+                  }, 300);
+
+                  var fare_ctx = document.getElementById("fare_chart");
+                  fare_chart = new Chart(fare_ctx, {
+                      type: 'bar',
+                      data: {
+                          labels: [{% for item in labels %}
+                                  "{{item}}",
+                                  {% endfor %}],
+                          datasets: [{
+                              label: 'Taxi Fare',
+                              data: [{% for item in values0 %}
+                                   {{item}},
+                                   {% endfor %}],
+                              backgroundColor: [
+                                  'rgba(255, 99, 132, 0.2)',
+                                  'rgba(54, 162, 235, 0.2)',
+                                  'rgba(255, 206, 86, 0.2)',
+                                  'rgba(75, 192, 192, 0.2)',
+                                  'rgba(153, 102, 255, 0.2)',
+                                  'rgba(255, 159, 64, 0.2)',
+                                  'rgba(255, 99, 132, 0.2)',
+                                  'rgba(54, 162, 235, 0.2)',
+                                  'rgba(255, 206, 86, 0.2)',
+                                  'rgba(75, 192, 192, 0.2)',
+                                  'rgba(153, 102, 255, 0.2)'
+                              ],
+                              borderColor: [
+                                  'rgba(255,99,132,1)',
+                                  'rgba(54, 162, 235, 1)',
+                                  'rgba(255, 206, 86, 1)',
+                                  'rgba(75, 192, 192, 1)',
+                                  'rgba(153, 102, 255, 1)',
+                                  'rgba(255, 159, 64, 1)',
+                                  'rgba(255, 99, 132, 1)',
+                                  'rgba(54, 162, 235, 1)',
+                                  'rgba(255, 206, 86, 1)',
+                                  'rgba(75, 192, 192, 1)',
+                                  'rgba(153, 102, 255, 1)'
+                              ],
+                              borderWidth: 1
+                          }]
+                      },
+                      options: {
+                          indexAxis: 'x',
+                          scales: {
+                              yAxes: [{
+                                  ticks: {
+                                      beginAtZero: true
+                                  }
+                              }]
+                          }
+                      }
+                  });
+                  fare_chart.data.labels = q.labels;
+                  fare_chart.data.datasets[0].data = q.values;
+                  fare_chart.update();
+              }
+          });
+      });
+  });
+  </script>
 
 </body>
 
