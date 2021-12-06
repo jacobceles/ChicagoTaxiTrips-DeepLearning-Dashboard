@@ -4,13 +4,13 @@ from flask import Flask, request, jsonify, render_template
 
 app = Flask(__name__)
 models = {
-    "2015": keras.models.load_model("NN_model"),
-    "2016": keras.models.load_model("NN_model"),
-    "2017": keras.models.load_model("NN_model"),
-    "2018": keras.models.load_model("NN_model"),
-    "2019": keras.models.load_model("NN_model"),
-    "2020": keras.models.load_model("NN_model"),
-    "2021": keras.models.load_model("NN_model")
+    "2015": keras.models.load_model("NN_model_2015.h5"),
+    "2016": keras.models.load_model("NN_model_2016.h5"),
+    "2017": keras.models.load_model("NN_model_2017.h5"),
+    "2018": keras.models.load_model("NN_model_2018.h5"),
+    "2019": keras.models.load_model("NN_model_2019.h5"),
+    "2020": keras.models.load_model("NN_model_2020.h5"),
+    "2021": keras.models.load_model("NN_model_2021.h5")
 }
 
 
