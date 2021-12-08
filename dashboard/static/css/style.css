@@ -291,7 +291,7 @@ section {
 }
 
 /*--------------------------------------------------------------
-# About
+# Home
 --------------------------------------------------------------*/
 .about .content h3 {
   font-weight: 700;
@@ -366,7 +366,7 @@ section {
 }
 
 /*--------------------------------------------------------------
-# Akills
+# Architecture
 --------------------------------------------------------------*/
 .skills .progress {
   height: 60px;
@@ -399,7 +399,7 @@ section {
 }
 
 /*--------------------------------------------------------------
-# Resume
+# Tuning
 --------------------------------------------------------------*/
 .resume .resume-title {
   font-size: 26px;
@@ -453,7 +453,7 @@ section {
 }
 
 /*--------------------------------------------------------------
-# Portfolio
+# Accuracy
 --------------------------------------------------------------*/
 .portfolio .portfolio-item {
   margin-bottom: 30px;
@@ -541,7 +541,7 @@ section {
 }
 
 /*--------------------------------------------------------------
-# Portfolio Details
+# Deployment
 --------------------------------------------------------------*/
 .portfolio-details {
   padding-top: 40px;
@@ -595,7 +595,7 @@ section {
 }
 
 /*--------------------------------------------------------------
-# Services
+# Demo
 --------------------------------------------------------------*/
 .services .icon-box {
   margin-bottom: 20px;
@@ -642,7 +642,7 @@ section {
 }
 
 /*--------------------------------------------------------------
-# Testimonials
+# Others
 --------------------------------------------------------------*/
 .testimonials .testimonials-carousel, .testimonials .testimonials-slider {
   overflow: hidden;
@@ -720,7 +720,7 @@ section {
 }
 
 /*--------------------------------------------------------------
-# Contact
+# Others 2
 --------------------------------------------------------------*/
 .contact {
   padding-bottom: 130px;
@@ -952,4 +952,45 @@ section {
     width: auto;
     padding-right: 20px 15px;
   }
+}
+
+
+/*--------------------------------------------------------------
+# Image Alignment
+--------------------------------------------------------------*/
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 33.33%;
+  padding: 5px;
+}
+
+
+/*--------------------------------------------------------------
+# Table Formatting
+--------------------------------------------------------------*/
+#fare_chart_table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#fare_chart_table td, #fare_chart_table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+#fare_chart_table tr:nth-child(even){background-color: #f2f2f2;}
+
+#fare_chart_table tr:hover {background-color: #ddd;}
+
+#fare_chart_table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #04AA6D;
+  color: white;
 }

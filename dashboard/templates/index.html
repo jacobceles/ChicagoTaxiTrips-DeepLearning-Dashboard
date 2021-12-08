@@ -83,13 +83,19 @@
           <li>
             <a href="#tuning" class="nav-link scrollto">
               <span class="iconify" data-icon="mdi:tune-variant" data-width="24" data-height="24"></span>
-              <span>&nbsp;&nbsp;Tuning the model</span>
+              <span>&nbsp;&nbsp;Tuning the Model</span>
             </a>
           </li>
           <li>
             <a href="#accuracy" class="nav-link scrollto">
               <span class="iconify" data-icon="bi:graph-up" data-width="24" data-height="24"></span>
-              <span>&nbsp;&nbsp;Predicted vs Expected</span>
+              <span>&nbsp;&nbsp;Evaluating the Model</span>
+            </a>
+          </li>
+          <li>
+            <a href="#deployment" class="nav-link scrollto">
+              <span class="iconify" data-icon="bi:graph-up" data-width="24" data-height="24"></span>
+              <span>&nbsp;&nbsp;Deploying the Model</span>
             </a>
           </li>
           <li>
@@ -121,18 +127,38 @@
 
         <div class="section-title">
           <h2>Architecture</h2>
-          <p>The number of input units in the network is defined by the number of data channels (number of input vectors)
-            while the number of output units is fixed to one. The user may define both the number of hidden layers as
-            well as the number of hidden units per layer. The context units are fixed, as each hidden unit has an
-            associated context unit. The network is updated through backpropagation through time (BPTT) with a maximum
-            memory defined by the user to conserve computational resources.<br>The user may also define other parameters
-            such as the iterations per training sample, learning rate, and others in Main. This program works for both
-            recurrent and non-recurrent networks, and any number of different neural network architectures can be tested
-            at once. The program is automatically formatted for parallel processing across computer cores.</p>
-        </div>
-
-        <div class="row">
-          <img src="static/img/architecture.png" class="img-fluid" alt="Architecture">
+          <p>&nbsp;&nbsp;We found few patterns over different years that proved to be very interesting. One interesting
+            thing is the time travelled and total miles across the years. 2016 seems to have the most travelling while
+            2020 and 2021 have the least. 2021 is not finished yet and 2020 had almost everyone indoors due to COVID.
+            One interesting thing to note is that the reason taxi use has been steadily declining since 2016 could be
+            due to the installation of the Red line extension to the Chicago "L" rapid transit system in 2016. This
+            means that many more people could take the train instead of using taxis. We also found that taxi use spikes
+            during holiday times like December since a lot of people are likely coming to populated cities like Chicago.
+          </p><br>
+          <p>&nbsp;&nbsp;After looking at various patterns in the data, we decided that <i>'Trip Seconds', 'Trip Miles'
+            and 'Month'</i> would be useful for predicting the fare for a given year. As aforementioned, months account
+            for seasonal spikes and dips in taxi usage. Trip seconds and trip miles are obvious additions, but we
+            included both because even though two trips may be 5 minutes long, one may be taking local roads to a close
+            location while the other may be taking a highway and be very far away. Therefore, there was not a clear
+            correlation between the two rates. There are a few hyperparameters we needed to decide on when creating the
+            model:
+          </p>
+            <ol>
+              <li>Loss metric</li>
+              <li>Number of hidden layers</li>
+              <li>Number of nodes in the input and hidden layers</li>
+            </ol>
+          <p>&nbsp;&nbsp;Since the training of these massive datasets takes a very long time, we tested these parameters
+            on a small chunk of data. By extracting just 100000 rows from the data, we were able to create multiple
+            quick models that could be used to evaluate what the best parameters would be for a model using all the
+            data. We decided to use the following architectures to create 12 possible candidate models:
+          </p>
+            <ol>
+              <li>The different levels for number of hidden layers would be <i>1, 2, and 3.</i></li>
+              <li>There are two loss metrics we considered: <i>Mean Absolute Error, and Mean Squared Error.</i></li>
+              <li>Lastly, we considered two options for number of nodes: <i>16 nodes in input, 32 nodes in hidden layers
+                or 32 nodes in input, 64 nodes in hidden layers.</i></li>
+            </ol>
         </div>
 
       </div>
@@ -145,18 +171,23 @@
 
         <div class="section-title">
           <h2>Tuning the Model</h2>
-          <p>In the abstract sense of machine learning, tuning is working with / "learning from" variable data based
-            on some parameters which have been identified to affect system performance as evaluated by some appropriate
-            metric. Improved performance reveals which parameter settings are more favorable (tuned) or less favorable
-            (untuned).<br>Translating this into common sense, tuning is essentially selecting the best parameters for an
-            algorithm to optimize its performance given a working environment such as hardware, specific workloads, etc.
-            And tuning in machine learning is an automated process for doing this.<br>For example, there is no such
-            thing as a "perfect set" of optimizations for all deployments of an Apache web server. A sysadmin learns
-            from the data "on the job" so to speak and optimizes their own Apache web server configuration as
-            appropriate for its specific environment. Now imagine an automated process for doing this same thing,
-            i.e., a system that can learn from data on its own, which is the definition of machine learning. A system
-            that tunes its own parameters in such a data-based fashion would be an instance of tuning in machine
-            learning.</p>
+          <p>The performance of the models are as follows:</p><br>
+          <div class="row">
+            <div class="column">
+              <center><img src="static/img/16_32.jpg" alt="MAE vs MSE for 16-32"></center>
+            </div>
+            <div class="column">
+              <center><img src="static/img/32_64.jpg" alt="MAE vs MSE for 32-64"></center>
+            </div>
+          </div><br>
+          <p>There are 12 total models and the above tables divide the models by the number of nodes in the input and
+            hidden layers. Surprisingly, the performance between the models with more nodes and fewer nodes were very
+            comparable and overall, the model with fewer nodes performed better than the model with more nodes. This is
+            likely due to over fitting due to too many nodes. Another interesting thing to note was that overall the
+            models with 3 hidden layers performed the worst out of the three hidden layer possibilities. Additionally,
+            although the models that optimize MSE had a lower MSE than the models that optimize MAE, the models with MAE
+            had a higher percentage increase in performance in MAE than MSE did in MSE. Therefore, the MAE performed
+            relatively superior.</p>
         </div>
 
       </div>
@@ -168,20 +199,55 @@
       <div class="container">
 
         <div class="section-title">
-          <h2>Accuracy</h2>
-          <p>Here we have a scatter plot showing the relationship between expected and predicted value</p>
-        </div>
-
-        <div class="row">
-          <center>
-<!--class="img-fluid"-->
-            <img src="static/img/p_vs_e.png" style="max-width:50%;height:400" alt="Predicted vs Expected Graph">
-          </center>
+          <h2>Evaluating the Model</h2>
+          <p>The model with the best performance is the model with fewer nodes, loss metric of MAE and 2 hidden layers.
+            After looking at the data, this result actually makes a lot of sense. For the node count and hidden layer
+            count, it is probably simply a matter of over fitting or under fitting the model and that combination seems
+            to be just right with a mean absolute error of 1.329 and a mean squared error of 354.460. However, for the
+            loss metric the advantage lies in the nature of the loss metric itself. Since MSE is squared, the model is
+            punished for making larger mistakes. When a very large number is squared then the error increases by a lot
+            and this is likely due to outliers in the data. There were some outliers in the data and that is why we
+            went with mean absolute error. Mean absolute error is robust to outliers since it is the average of the
+            absolute differences between the actual and predicted values. The outliers in our data are thus not
+            magnified. The following is a loss graph for the selected model and a graph depicting the predicted values
+            vs the actual values for the model:</p><br>
+            <div class="row">
+              <div class="column">
+                <center><img src="static/img/16_32_mae_loss.jpg" alt="Loss Graph for 16-32"></center>
+              </div>
+              <div class="column">
+                <center><img src="static/img/16_32_scatter_plot.png" alt="Scatter Lot for 16-32"></center>
+              </div>
+            </div>
         </div>
 
       </div>
     </section>
     <!-- End Accuracy Section -->
+
+    <!-- ======= Accuracy Section ======= -->
+    <section id="deployment" class="about">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Deploying the Model</h2>
+          <p>Once the models were completed, Flask was used to deploy it. Flask is a micro web framework written in
+            Python. It is classified as a microframework because it does not require particular tools or libraries. It
+            has no database abstraction layer, form validation, or any other components where pre-existing third-party
+            libraries provide common functions. Since Flask is python based it enabled using Keras for reading,
+            loading, and executing the model as expected. The flow of deployment is as shown below:</p><br>
+            <div class="row">
+              <center><img src="static/img/deployment.png" alt="Deployment"></center>
+            </div>
+          <br>
+          <p>The WSGI application (Flask app) acts as the gateway interface, and Nginx is used as the web server. The
+            setup is designed to handle multiple requests concurrently. Once a request comes in flask process the
+            endpoint and returns the result back to the user. If the request for prediction is raised, it passes the
+            parameters into the model and responds back with the result.</p>
+        </div>
+
+      </div>
+    </section>
 
     <!-- ======= Demo Section ======= -->
     <section id="demo" class="about">
@@ -197,11 +263,11 @@
             <div class="row justify-content-center">
               <div class="col-auto">
                 <label class="visually-hidden" for="distance">Distance (Miles)</label>
-                <input type="number" class="form-control" id="distance" name="distance" placeholder="Distance (Miles)">
+                <input type="number" step="0.01" class="form-control" id="distance" name="distance" placeholder="Distance (Miles)">
               </div>
               <div class="col-auto">
                 <label class="visually-hidden" for="seconds">Time Taken (Seconds)</label>
-                <input type="number" class="form-control" id="seconds" name="seconds" placeholder="Time Taken (Seconds)">
+                <input type="number" step="0.01" class="form-control" id="seconds" name="seconds" placeholder="Time Taken (Seconds)">
               </div>
               <div class="col-auto">
                 <label class="visually-hidden" for="month">Month</label>
@@ -234,7 +300,19 @@
     <!-- Results Section -->
     <center>
       <section id="results" class="tm-section-pad-top">
-        <canvas id="fare_chart" width="100%" height="40"></canvas>
+        <div class="row">
+          <div class="column">
+            &nbsp;&nbsp;
+            <center><canvas id="fare_chart" width="100%" height="40"></canvas></center>
+          </div>
+          <div class="column">
+            <table id="fare_chart_table" border='1'>
+              <tr>
+              </tr>
+            </table>
+          </div>
+        </div>
+
       </section>
     </center>
     <!-- End Results Section -->
@@ -294,6 +372,17 @@
                   $('html, body').animate({
                       scrollTop: $("#results").offset().top
                   }, 300);
+
+                  $("#fare_chart_table").empty();
+                  var i;
+                  var html = '';
+                  $('<tr>').append($('<th>').text("Year"), $('<th>').text("Fare (in USD)")).appendTo('#fare_chart_table');
+                  for (i = 0; i < q.values.length; i++) {
+                     $('<tr>').append(
+                        $('<td>').text(q.labels[i]),
+                        $('<td>').text(q.values[i])
+                     ).appendTo('#fare_chart_table');
+                  }
 
                   var fare_ctx = document.getElementById("fare_chart");
                   fare_chart = new Chart(fare_ctx, {

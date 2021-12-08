@@ -1,0 +1,23 @@
+{
+  "form": [
+    {
+      "type": "array",
+      "items": {
+        "type": "section",
+        "items": [
+          "friends[].nick",
+          {
+            "type": "array",
+            "items": [
+              "friends[].animals[]"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "submit",
+      "title": "Submit"
+    }
+  ]
+}
